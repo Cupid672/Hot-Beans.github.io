@@ -1,0 +1,800 @@
+/* Import Google Fonts: Fredoka One for headings, Nunito for body */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap');
+
+:root {
+  /* New Palette */
+  --dusty-blue: #A1C3D1;
+  --muted-purple: #B39BC8;
+  --light-lavender: #F0EBF4; /* Primary light background */
+  --bright-pink: #F172A1;    /* Primary accent */
+  --strong-pink: #E64398;   /* Secondary accent / Gradient end */
+
+  /* Font Variables */
+  --font-headings: 'Fredoka One', cursive;
+  --font-body: 'Nunito', sans-serif;
+
+  /* General Purpose Colors */
+  --background-main: var(--light-lavender);
+  --text-primary: #333745; /* Dark color for text on light backgrounds for readability */
+  --text-on-dark-bg: var(--light-lavender);
+  --text-on-accent-bg: #FFFFFF; /* White text on pink buttons/accents */
+
+  --header-footer-bg: var(--muted-purple); /* Using muted purple for header/footer */
+  --card-bg: #FFFFFF; /* Pure white for cards to stand out on lavender bg */
+  
+  --gradient-start: var(--bright-pink);
+  --gradient-end: var(--strong-pink);
+
+  /* --- Mapping to old variable names for easier transition (can be refactored later) --- */
+  /* These direct mappings might need adjustment based on visual outcome */
+  --primary-teal: var(--bright-pink); /* Replaced with primary accent */
+  --primary-blue: var(--strong-pink); /* Replaced with secondary accent */
+  --dark-green: var(--muted-purple);  /* Replaced with a color from the new palette */
+  --white: #FFFFFF; /* Retaining pure white for specific uses if needed */
+  --light-gray: var(--light-lavender); /* Main light background */
+  --dark-gray: var(--text-primary);  /* Main text color */
+  --accent-orange: var(--bright-pink); /* Replaced orange with primary pink accent */
+  --deep-purple: var(--header-footer-bg); /* Header/footer background */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--background-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+header {
+  background-color: var(--header-footer-bg);
+  color: var(--text-on-dark-bg);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-headings);
+  font-size: 2rem; /* Slightly larger for the cartoonish font */
+  font-weight: normal; /* Fredoka One is already bold */
+  display: flex;
+  align-items: center;
+  color: var(--text-on-dark-bg);
+}
+
+.logo span {
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 0.25em; /* Adjust spacing if needed */
+}
+
+.section-title {
+  font-family: var(--font-headings);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.8rem; /* Adjusted for heading font */
+  color: var(--muted-purple); /* Using purple for main section titles */
+  font-weight: normal;
+}
+
+.section-title span { /* Gradient for parts of section titles */
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
+  color: var(--text-on-dark-bg);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 700; /* Bolder Nunito for nav links */
+  font-size: 1rem;
+}
+
+.nav-links a:hover,
+.nav-links a.active { /* Ensure .active also gets hover color */
+  color: var(--bright-pink); /* Pink for hover/active */
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  background: var(--text-on-dark-bg);
+  height: 3px;
+  width: 25px;
+  margin: 3px 0;
+  border-radius: 3px; /* Rounded hamburger lines */
+}
+
+/* .active class for nav links is handled by nav-links a.active now */
+
+.hero {
+  /* Using dusty blue for hero, consider an image or pattern later */
+  background-color: var(--strong-pink); 
+  /* Optional: Add a subtle pattern or keep it solid */
+  /* background-image: linear-gradient(135deg, var(--dusty-blue) 0%, var(--muted-purple) 100%); */
+  color: var(--white); /* White text on this background */
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.hero h1 {
+  font-family: var(--font-headings);
+  font-size: 3.5rem; /* Larger for hero heading */
+  margin-bottom: 1rem;
+  font-weight: normal;
+  color: var(--white);
+}
+
+.hero h1 .gradient-text { /* Ensure gradient text in hero is distinct */
+    background: linear-gradient(90deg, #FFF, var(--light-lavender)); /* Lighter gradient for hero */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: var(--light-lavender); /* Lighter text for hero paragraph */
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.centered-logo {
+  width: 180px; /* Adjusted size */
+  height: auto;
+  border-radius: 25px; /* More rounded */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+.centered-logo:hover {
+    transform: scale(1.05);
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body); /* Using body font for buttons, but bold */
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  color: var(--text-on-accent-bg);
+  padding: 0.9rem 1.8rem; /* Slightly larger padding */
+  border-radius: 25px; /* Rounded buttons */
+  text-decoration: none;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.btn:hover,.btn:focus {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 15px rgba(241, 114, 161, 0.4); /* Shadow with pink hue */
+}
+
+.btn-secondary {
+  background: var(--dusty-blue);
+  color: var(--white);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background: var(--muted-purple);
+  box-shadow: 0 6px 15px rgba(179, 155, 200, 0.4); /* Shadow with purple hue */
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.about-content {
+  display: flex;
+  gap: 2.5rem; /* Increased gap */
+  align-items: center;
+}
+
+.about-image {
+  flex: 1;
+  border-radius: 20px; /* More rounded */
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.about-image img {
+  width: 100%;
+  display: block;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h3 {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  color: var(--strong-pink); /* Strong pink for subheadings */
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.about-text p, .privacy-text p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.privacy-text h3 {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  color: var(--strong-pink);
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  background-color: var(--card-bg); /* Give stats a card-like bg */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 200px;
+  margin: 1rem;
+}
+
+.stat-number {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  font-size: 3rem;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+.stat-text {
+    font-weight: 700;
+    color: var(--muted-purple);
+}
+
+.developers {
+  background-color: rgb(240, 199, 206); /* Section bg */
+}
+#developers .section-title { /* Make section title white on dusty blue bg */
+    color: var(--white);
+}
+#developers .section-title span { /* Adjust gradient for visibility */
+    background: linear-gradient(90deg, var(--light-lavender), #ffeeff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.dev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly larger cards */
+  gap: 2rem;
+}
+
+.dev-card {
+  background-color: var(--card-bg);
+  border-radius: 20px; /* Rounded cards */
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-top: 5px solid;
+  border-image: linear-gradient(90deg, var(--gradient-start), var(--gradient-end)) 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.dev-image {
+  height: 220px; /* Adjusted height */
+  overflow: hidden;
+}
+
+.dev-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dev-info {
+  padding: 1.5rem;
+  flex-grow: 1; /* Allows text to take available space */
+}
+
+.dev-info h3 {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+  color: var(--strong-pink);
+  font-size: 1.6rem;
+}
+
+.dev-title {
+  color: var(--muted-purple);
+  font-weight: 700; /* Bold Nunito */
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.dev-info p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.center-button { /* Inherits .btn styles, can add specifics if needed */
+  padding: 1rem 2rem; /* Make it prominent */
+}
+
+.jobs-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.job-card {
+  background-color: var(--card-bg);
+  margin-bottom: 2rem;
+  border-radius: 15px; /* Rounded job cards */
+  padding: 2rem; /* More padding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-left: 5px solid var(--bright-pink);
+}
+
+.job-title {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  color: var(--strong-pink);
+  margin-bottom: 0.75rem;
+  font-size: 1.7rem;
+}
+
+.job-meta {
+  display: flex;
+  gap: 0.75rem; /* Adjusted gap */
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.job-meta span {
+  background-color: var(--light-lavender); /* Light lavender for tags */
+  color: var(--muted-purple); /* Purple text on tags */
+  padding: 0.4rem 0.9rem;
+  border-radius: 15px; /* Rounded tags */
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.job-meta i {
+  margin-right: 0.3rem;
+}
+
+.job-description {
+  margin-bottom: 1rem;
+}
+
+.job-requirements h4,
+.job-description h4,
+.job-qualifications h4 {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  color: var(--muted-purple); /* Purple for these subheadings */
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.3rem;
+}
+
+.job-description ul,
+.job-requirements ul,
+.job-qualifications ul {
+  padding-left: 1.5rem;
+  list-style-type: '🩷'; /* Fun list style */
+  margin-left: 0.5rem;
+}
+.job-description ul li,
+.job-requirements ul li,
+.job-qualifications ul li {
+    padding-left: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+
+.apply-section {
+  background: linear-gradient(135deg, rgba(241, 114, 161, 0.05), rgba(230, 67, 152, 0.1)); /* Subtle pink gradient */
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 2.5rem; /* More padding */
+  border-radius: 20px; /* Rounded form container */
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.6rem; /* Increased margin */
+  font-weight: 700; /* Bold Nunito for labels */
+  color: var(--muted-purple);
+  font-size: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.9rem; /* Increased padding */
+  border: 1px solid var(--dusty-blue); /* Dusty blue border */
+  border-radius: 10px; /* Rounded inputs */
+  font-size: 1rem;
+  font-family: var(--font-body);
+  background-color: var(--light-lavender); /* Light lavender input bg */
+  color: var(--text-primary);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--bright-pink);
+  box-shadow: 0 0 0 3px rgba(241, 114, 161, 0.2); /* Pink focus glow */
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Custom styling for checkboxes */
+.form-group input[type="checkbox"] {
+    width: auto; /* Override full width for checkboxes */
+    margin-right: 0.5rem;
+    accent-color: var(--bright-pink); /* Modern way to style checkbox color */
+    transform: scale(1.2); /* Make checkbox slightly larger */
+}
+.form-group input[type="checkbox"] + label {
+    display: inline; /* Keep label next to checkbox */
+    font-weight: normal; /* Normal weight for checkbox labels */
+    color: var(--text-primary);
+}
+
+
+.resources {
+  background-color: var(--background-main);
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.resource-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-bottom: 5px solid;
+  border-image: linear-gradient(90deg, var(--gradient-start), var(--gradient-end)) 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.resource-image {
+  height: 180px; /* Adjusted height */
+  overflow: hidden;
+}
+
+.resource-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resource-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; /* Align button to bottom */
+}
+
+.resource-info h3 {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+  color: var(--strong-pink);
+  font-size: 1.5rem;
+}
+
+.resource-info p {
+  margin-bottom: 1.5rem; /* More space before button */
+  min-height: 3rem; /* Adjusted min-height */
+  flex-grow: 1;
+}
+.resource-info .btn {
+    margin-top: auto; /* Pushes button to bottom if content is short */
+    align-self: flex-start; /* Align button to left */
+}
+
+
+.thank-you-container {
+  max-width: 700px; /* Adjusted width */
+  margin: 2rem auto; /* Add some margin */
+  padding: 3rem; /* Increased padding */
+  text-align: center;
+  background-color: var(--card-bg);
+  border-radius: 25px; /* More rounded */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.success-icon {
+  font-size: 6rem; /* Larger icon */
+  color: var(--bright-pink); /* Pink success icon */
+  margin-bottom: 1.5rem; /* Adjusted margin */
+  font-family: var(--font-headings); /* Use heading font if it looks good */
+  line-height: 1;
+}
+
+.thank-you-title {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  color: var(--strong-pink);
+  margin-bottom: 1.5rem;
+  font-size: 2.8rem;
+}
+
+.thank-you-message {
+  font-size: 1.15rem; /* Slightly larger */
+  margin-bottom: 2.5rem; /* More space */
+  color: var(--text-primary);
+}
+
+.next-steps {
+  background-color: var(--light-lavender); /* Light lavender bg */
+  border-radius: 15px; /* Rounded */
+  padding: 2rem;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Inner shadow */
+  margin-bottom: 2.5rem;
+}
+
+.next-steps h3 {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  color: var(--muted-purple);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.next-steps ol {
+  text-align: left;
+  padding-left: 1rem; /* Reduced padding */
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  list-style-type: decimal; /* Standard decimal list */
+}
+.next-steps ol li {
+    margin-bottom: 0.6rem;
+    padding-left: 0.5rem;
+}
+
+.thank-you-container .btn {
+    margin: 0.5rem; /* Space out buttons */
+}
+
+
+footer {
+  background-color: var(--header-footer-bg);
+  color: var(--text-on-dark-bg);
+  padding: 3rem 0 1.5rem; /* Adjusted padding */
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Wider columns */
+  gap: 2.5rem; /* Increased gap */
+  margin-bottom: 2.5rem;
+}
+
+.footer-column h3 {
+  font-family: var(--font-headings);
+  font-weight: normal;
+  background: linear-gradient(90deg, var(--bright-pink), var(--strong-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.2rem; /* Increased margin */
+  font-size: 1.5rem; /* Larger footer headings */
+}
+.footer-column p {
+    font-size: 0.95rem;
+    color: var(--light-lavender); /* Lighter text for footer p */
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem; /* Increased spacing */
+}
+
+.footer-links a {
+  color: var(--light-lavender); /* Lighter link color */
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 700; /* Bold Nunito */
+}
+
+.footer-links a:hover {
+  color: var(--bright-pink); /* Pink hover for footer links */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(240, 235, 244, 0.2); /* Lighter border */
+  font-size: 0.9rem;
+  color: var(--light-lavender);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hamburger {
+    display: flex;
+    position: absolute;
+    top: 1.7rem; /* Adjusted for potentially taller header */
+    right: 1.5rem; /* More spacing */
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--header-footer-bg);
+    padding: 1rem 0;
+    margin-top: 0.5rem; /* Space from logo */
+    border-top: 1px solid rgba(240, 235, 244, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-image, .about-text {
+    flex: 1 0 100%;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem; /* Adjusted for mobile */
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem; /* Adjusted for mobile */
+  }
+
+  .stats {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+  .stat-item {
+    min-width: auto;
+    margin: 1rem 0;
+  }
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .dev-grid {
+    grid-template-columns: 1fr; /* Stack dev cards on mobile */
+  }
+  .resource-grid {
+    grid-template-columns: 1fr; /* Stack resource cards on mobile */
+  }
+  .form-container {
+      padding: 1.5rem;
+  }
+  .thank-you-container {
+      padding: 2rem 1.5rem;
+  }
+  .thank-you-title {
+      font-size: 2.2rem;
+  }
+  .success-icon {
+      font-size: 5rem;
+  }
+}
+
